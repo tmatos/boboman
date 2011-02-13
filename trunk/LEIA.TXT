@@ -1,0 +1,19 @@
+Boboman 0.1
+(C) 2008,2011 Tiago Matos
+
+code.google.com/p/boboman/
+
+
+Eu comecei a fazer esse joguinho nas ferias de 2008 como uma forma de praticar programacao em C.
+Ele eh bem feio, nao tem graca e acho que nunca vai ficar pronto. Mas tah ai pra que tiver curiosidade.
+
+
+Teclas:
+
+	Direc. esq. e dir. - move o cara p/ os lados
+	Direc. acima - pular
+	Shift esq. - correr
+	Espaço - se tiver energia, permite dar pulo mais alto
+
+
+Contato: tiagoms88 at gmail dot com

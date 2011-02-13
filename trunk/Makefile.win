@@ -1,0 +1,45 @@
+# Project: jogobobo
+# windows makefile
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = jogobobo_private.res
+OBJ  = main.o jogo.o menus.o msg.o graficos.o $(RES)
+LINKOBJ  = main.o jogo.o menus.o msg.o graficos.o $(RES)
+LIBS =  -L"lib" -mwindows -lalpng -lalleg  -g3 
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
+BIN  = jogobobo.exe
+CXXFLAGS = $(CXXINCS)   -g3
+CFLAGS = $(INCS)   -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before jogobobo.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "jogobobo.exe" $(LIBS)
+
+main.o: main.c lang.h lang/pt.h msg.h menus.h graficos.h jogo.h main.h
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+jogo.o: jogo.c lang.h lang/pt.h graficos.h msg.h jogo.h
+	$(CC) -c jogo.c -o jogo.o $(CFLAGS)
+
+menus.o: menus.c lang.h lang/pt.h msg.h graficos.h jogo.h main.h menus.h
+	$(CC) -c menus.c -o menus.o $(CFLAGS)
+
+msg.o: msg.c msg.h graficos.h jogo.h lang.h lang/pt.h
+	$(CC) -c msg.c -o msg.o $(CFLAGS)
+
+graficos.o: graficos.c msg.h graficos.h jogo.h
+	$(CC) -c graficos.c -o graficos.o $(CFLAGS)
+
+jogobobo_private.res: jogobobo_private.rc 
+	$(WINDRES) -i jogobobo_private.rc --input-format=rc -o jogobobo_private.res -O coff 
