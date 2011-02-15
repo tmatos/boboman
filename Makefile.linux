@@ -1,4 +1,4 @@
-# Project: jogobobo
+# Boboman 0.1
 # linux makefile
 
 CPP  = g++
@@ -9,7 +9,7 @@ LINKOBJ  = main.o $(RES)
 LIBS =  -L"/usr/lib" -lalleg -lX11 -lXpm -lpthread -lXcursor -lXxf86vm -lm -lXext -ldl
 INCS =  -I"/usr/include" 
 CXXINCS =  -I"/usr/lib/gcc/i486-linux-gnu/4.1.2/include"  -I"/usr/include/c++/4.1.2/backward"  -I"/usr/include/c++/4.1.2/i486-linux-gnu"  -I"/usr/include/c++/4.1.2"  -I"/usr/include" 
-BIN  = jogo
+BIN  = boboman
 CXXFLAGS = $(CXXINCS)  
 OLVL = -O3
 CFLAGS = -Wall $(OLVL) $(INCS)  
@@ -17,14 +17,14 @@ RM = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
 
-all: all-before jogo all-after
+all: all-before boboman all-after
 
 
 clean: clean-custom
 	${RM} $(OBJ) $(BIN)
 
 $(BIN): $(OBJ)
-	$(CC) $(LINKOBJ) -o "jogo" $(LIBS)
+	$(CC) $(LINKOBJ) -o "boboman" $(LIBS)
 
 main.o: main.c
 	$(CC) -c main.c -o main.o $(CFLAGS)
